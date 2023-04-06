@@ -3,6 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import { FcGoogle } from "react-icons/fc";
+import { BiMenuAltLeft } from "react-icons/bi";
 
 export default function Navbar() {
   const { data: sessionData } = useSession();
@@ -12,10 +13,13 @@ export default function Navbar() {
   );
   return (
     <div className="sticky top-0 z-50 flex h-[10vh] items-center justify-between bg-lightGrey px-5 dark:bg-darkGrey">
-      <h1 className="flex-1 text-4xl">
+      <h1 className="hidden flex-1 text-4xl lg:block">
         <SiOpensea />
       </h1>
-      <ul className="hidden flex-1 items-center justify-end gap-5 text-xl md:flex">
+      <h1 className="block flex-1 text-4xl lg:hidden">
+        <BiMenuAltLeft />
+      </h1>
+      <ul className="hidden flex-1 items-center justify-end gap-4 text-xl lg:flex">
         <li>Home</li>
         <li>About Us</li>
         <button

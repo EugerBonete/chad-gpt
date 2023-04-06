@@ -40,11 +40,11 @@ export default function Main() {
   return (
     <div className="h-[90vh] w-full overflow-scroll">
       <Navbar />
-      <div className="flex h-[50rem] flex-col items-center justify-center gap-20">
+      <div className="flex flex-col items-center justify-center gap-10 py-20">
         <h1 className="text-4xl font-semibold">
           {`Hello ${sessionData?.user.name || "Guest"}`}{" "}
         </h1>
-        <div className="mx-20 flex gap-10">
+        <div className="m-10 flex flex-col gap-10 md:flex-row lg:mx-20">
           {MainData.map((data) => {
             return (
               <div className="flex flex-1 flex-col gap-5">
@@ -66,7 +66,7 @@ export default function Main() {
       </div>
       <div className="sticky bottom-0 z-50  flex w-full items-end justify-center px-20">
         <input
-          className="w-full rounded-lg p-4 text-lg shadow-lg outline-none"
+          className="w-full rounded-lg bg-[#40414f] p-4 text-lg shadow-lg outline-none"
           type="text"
           placeholder="Send a message..."
         />

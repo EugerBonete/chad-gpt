@@ -38,7 +38,7 @@ export default function Main() {
     },
   ];
   return (
-    <div className="h-[90vh] w-full overflow-scroll">
+    <div className="h-[98vh] w-full overflow-scroll lg:h-[95vh]">
       <Navbar />
       <div className="flex flex-col items-center justify-center gap-10 py-20">
         <h1 className="text-4xl font-semibold">
@@ -64,7 +64,7 @@ export default function Main() {
           })}
         </div>
       </div>
-      <div className="sticky bottom-0 z-50  flex w-full items-end justify-center px-20">
+      <div className="sticky bottom-[0px] z-50 flex w-full items-end justify-center px-20">
         <input
           className="w-full rounded-lg bg-[#40414f] p-4 text-lg shadow-lg outline-none"
           type="text"

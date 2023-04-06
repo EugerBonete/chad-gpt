@@ -8,6 +8,8 @@ const config = {
         dark: "#202123",
         darkBlue: "#343541",
         darkGrey: "#444654",
+        lightGrey: "#d9d9d9 ",
+        warmGrey: "#f5f5f5 ",
       },
     },
   },

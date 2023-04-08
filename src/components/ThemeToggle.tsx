@@ -1,5 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
+import { RiMoonLine } from "react-icons/ri";
+import { BiSun } from "react-icons/bi";
 
 export default function ThemeToggle() {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -10,21 +12,17 @@ export default function ThemeToggle() {
     setTheme(currentTheme === "light" ? "dark" : "light");
   };
 
-  const sunIcon =
-    "https://raw.githubusercontent.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/main/public/images/svgs/moon-filled-to-sunny-filled-loop-transition.svg";
-
-  const moonIcon =
-    "https://raw.githubusercontent.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/main/public/images/svgs/sunny-filled-loop-to-moon-filled-loop-transition.svg";
-
   return (
-    <div
-      className="cursor-pointer rounded-full bg-black fill-dark p-2 dark:bg-white"
+    <button
+      className=" mt-5 flex w-full items-center gap-5 rounded-lg border p-4 hover:bg-slate-400 dark:hover:bg-gray-700"
       onClick={themeChangeHandler}
     >
-      <img
-        className={`h-7 w-7 ${currentTheme === "light" && "invert"}`}
-        src={currentTheme === "light" ? moonIcon : sunIcon}
-      />
-    </div>
+      {currentTheme === "light" ? (
+        <RiMoonLine className="text-2xl" />
+      ) : (
+        <BiSun className="text-2xl" />
+      )}
+      <p className="">Dark Mode</p>
+    </button>
   );
 }

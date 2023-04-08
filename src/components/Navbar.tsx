@@ -11,32 +11,47 @@ export default function Navbar() {
     undefined, // no input
     { enabled: sessionData?.user !== undefined }
   );
+  const handleToggleSidebar = () => {
+    const sidebar = document.getElementById("sidebar");
+    const toggleSidebar = document.getElementById("toggleSidebar");
+    if (sidebar && toggleSidebar) {
+      sidebar.classList.remove("-left-[350px]");
+      toggleSidebar.classList.add("hidden");
+    }
+  };
+
   return (
     <div className="sticky top-0 z-50 flex h-[10vh] items-center justify-between bg-lightGrey px-5 dark:bg-darkGrey">
       <h1 className="hidden flex-1 text-4xl lg:block">
         <SiOpensea />
       </h1>
-      <h1 className="block flex-1 text-4xl lg:hidden">
-        <BiMenuAltLeft />
+      <h1 id="toggleSidebar" className="flex-1 text-4xl lg:hidden">
+        <BiMenuAltLeft
+          className="cursor-pointer"
+          onClick={handleToggleSidebar}
+        />
       </h1>
-      <ul className="hidden flex-1 items-center justify-end gap-4 text-xl lg:flex">
-        <li>Home</li>
-        <li>About Us</li>
-        <button
-          className="rounded-full bg-slate-500 px-10 py-3 text-white no-underline shadow-lg transition hover:bg-slate-600 dark:bg-white/10 dark:hover:bg-white/20"
-          onClick={sessionData ? () => void signOut() : () => void signIn()}
-        >
-          {sessionData ? (
-            "Sign out"
-          ) : (
-            <div className="flex items-center justify-between gap-4">
-              <FcGoogle className="text-3xl" />
-              Sign in with Google
-            </div>
-          )}
-        </button>
-        <ThemeToggle />
-      </ul>
+      {sessionData && (
+        <div className=" flex items-center justify-end gap-4 text-xl">
+          <button
+            className={`rounded-full bg-white/10 px-10 py-3 no-underline shadow-lg transition hover:bg-slate-600 hover:bg-white/20 ${
+              sessionData
+                ? ""
+                : "cursor-wait disabled:cursor-not-allowed disabled:opacity-50"
+            }`}
+            onClick={() => void signOut()}
+            disabled={!sessionData}
+          >
+            {sessionData ? "Sign out" : "Loading..."}
+          </button>
+          <img
+            className="h-10 w-10 rounded-full"
+            src={sessionData?.user.image || ""}
+            alt={sessionData.user.name || ""}
+          />
+          <p>{sessionData.user.name}</p>
+        </div>
+      )}
     </div>
   );
 }
